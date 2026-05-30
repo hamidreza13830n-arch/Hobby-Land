@@ -33,7 +33,6 @@
             z-index: 1000;
         }
         
-        /* لایه تیره برای خوانایی بهتر کادر */
         .login-container::before {
             content: '';
             position: absolute;
@@ -57,16 +56,16 @@
             z-index: 1;
         }
 
-        /* لوگوی دایره‌ای بزرگ - نصفش بیرون کادر */
+        /* لوگوی دایره‌ای بزرگتر - هم اندازه حاشیه */
         .login-logo {
-            width: 130px;
-            height: 130px;
-            margin: -75px auto 10px auto;
+            width: 150px;
+            height: 150px;
+            margin: -85px auto 10px auto;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000017e871f89c0d959cc013167b%20(1).png') no-repeat center center;
             background-size: cover;
             border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .login-box h2 { 
@@ -130,7 +129,6 @@
             max-width: 350px;
         }
         
-        /* کادر آنلاین با حاشیه نئونی زیبا */
         .online-box {
             position: relative;
             width: 210px;
@@ -144,7 +142,6 @@
             flex-shrink: 0;
             border-radius: 20px;
             box-shadow: 0 0 8px rgba(192, 132, 252, 0.5), 0 0 15px rgba(192, 132, 252, 0.2);
-            transition: box-shadow 0.3s ease;
         }
         .online-count {
             color: #c084fc;
@@ -153,15 +150,14 @@
             margin-left: 12px;
             margin-top: -6px;
             letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(192, 132, 252, 0.5);
         }
         
         /* انیمیشن سه نقطه برای در حال نوشتن */
         .typing-dots {
-            display: inline-flex;
+            display: none;
             align-items: center;
             gap: 4px;
-            background: rgba(0,0,0,0.75);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(12px);
             padding: 8px 18px;
             border-radius: 40px;
@@ -170,8 +166,8 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 101;
-            border: 1px solid rgba(192, 132, 252, 0.4);
-            box-shadow: 0 0 12px rgba(192, 132, 252, 0.3);
+            border: 1px solid rgba(192, 132, 252, 0.5);
+            box-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
         }
         .typing-dots span {
             width: 8px;
@@ -194,7 +190,7 @@
             font-weight: 500;
         }
 
-        /* منطقه پیام‌ها */
+        /* منطقه پیام‌ها - با فضای خالی کافی که پیام زیر کادر نره */
         .messages-area {
             flex: 1;
             overflow-y: auto;
@@ -204,7 +200,7 @@
             gap: 8px;
             z-index: 1;
             position: relative;
-            padding-bottom: 95px;
+            padding-bottom: 100px;
         }
         
         /* مدل پیام */
@@ -221,13 +217,11 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             position: relative;
         }
-        /* پیام من: آبی کم رنگ */
         .my-message .message-bubble {
             background: rgba(0, 132, 255, 0.85);
             color: white;
             border-bottom-right-radius: 4px;
         }
-        /* پیام بقیه: سفید */
         .other-message .message-bubble {
             background: rgba(255, 255, 255, 0.95);
             color: #111;
@@ -252,7 +246,6 @@
         .reply-sender { font-weight: bold; font-size: 10px; }
         .reply-text { font-size: 10px; opacity: 0.85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        /* کادر ریپلای در حال تایپ */
         .replying-box {
             background: #e8f5e9; padding: 8px 12px; margin: 0 12px 8px 12px; border-radius: 16px;
             display: flex; justify-content: space-between; align-items: center;
@@ -262,7 +255,7 @@
             background: none; border: none; font-size: 18px; cursor: pointer; color: #777;
         }
 
-        /* کادر تایپ پیام - با حاشیه نئونی */
+        /* کادر تایپ پیام */
         .input-container {
             position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(255, 255, 255, 0.95);
@@ -298,7 +291,6 @@
         }
         .send-btn:active { transform: scale(0.95); }
 
-        /* کادر منو */
         .context-menu {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: #1f2a2f; backdrop-filter: blur(20px); border-radius: 24px;
@@ -318,7 +310,8 @@
             .message-bubble { max-width: 85%; }
             .send-btn { width: 42px; height: 42px; }
             .typing-dots { bottom: 72px; padding: 6px 14px; }
-            .login-logo { width: 110px; height: 110px; margin-top: -65px; }
+            .messages-area { padding-bottom: 85px; }
+            .login-logo { width: 130px; height: 130px; margin-top: -75px; }
         }
         .messages-area::-webkit-scrollbar { width: 4px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
@@ -363,8 +356,7 @@
     </div>
 </div>
 
-<!-- نشانگر در حال نوشتن -->
-<div id="typingIndicator" style="display: none;" class="typing-dots">
+<div id="typingIndicator" class="typing-dots">
     <span class="typing-text">در حال نوشتن</span>
     <span></span><span></span><span></span>
 </div>
@@ -396,7 +388,6 @@
     function hideContextMenu() { if(contextMenuDiv) { contextMenuDiv.remove(); contextMenuDiv = null; } }
     function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
 
-    // سیستم آنلاین دقیق
     function setUserOnline() {
         if(!currentUser) return;
         isOnline = true;
@@ -598,9 +589,48 @@
         typingTimeout = setTimeout(() => { db.ref(`typing/${currentUser}`).remove(); }, 1500);
     }
 
+    // پیام‌ها با حفظ ترتیب (با استفاده از تایم‌استمپ)
     function renderMessage(messageId, msg) {
         const area = document.getElementById('messagesArea');
         if(!area) return;
+        
+        // اگه پیام قبلاً وجود داره، حذفش نکن (برای ادیت و ری اکشن)
+        const existingMsg = document.querySelector(`[data-message-id="${messageId}"]`);
+        if(existingMsg) {
+            // فقط محتوای پیام رو به‌روز کن، جای جابجا نشه
+            const bubble = existingMsg.querySelector('.message-bubble');
+            const isMy = msg.sender === currentUser;
+            
+            let replyHtml = '';
+            if(msg.replyTo) {
+                replyHtml = `
+                    <div class="reply-preview">
+                        <div class="reply-sender">${escapeHtml(msg.replyTo.sender)}</div>
+                        <div class="reply-text">${escapeHtml(msg.replyTo.text)}</div>
+                    </div>
+                `;
+            }
+            
+            let reactionsHtml = '';
+            if(msg.reactions && Object.keys(msg.reactions).length > 0) {
+                const unique = [...new Set(Object.values(msg.reactions))];
+                reactionsHtml = `<div style="display: flex; gap: 5px; margin-top: 5px;">${unique.map(r => `<span style="font-size: 16px;">${r}</span>`).join('')}</div>`;
+            }
+            
+            bubble.innerHTML = `
+                ${!isMy ? `<div class="sender-name">${msg.sender}</div>` : ''}
+                ${replyHtml}
+                <div class="message-text">${escapeHtml(msg.text)}${msg.edited ? ' <span style="font-size: 9px;">(ویرایش)</span>' : ''}</div>
+                <div class="message-info">
+                    <span>${new Date(msg.timestamp).toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'})}</span>
+                    ${isMy ? `<span class="tick ${msg.seen ? 'tick-seen' : ''}">${msg.seen ? '✓✓' : '✓'}</span>` : ''}
+                </div>
+                ${reactionsHtml}
+            `;
+            return;
+        }
+        
+        // پیام جدید - اضافه کردن به ترتیب
         const isMy = msg.sender === currentUser;
         const wrapper = document.createElement('div');
         wrapper.className = `message-wrapper ${isMy ? 'my-message' : 'other-message'}`;
@@ -639,13 +669,18 @@
             showContextMenu({ id: messageId, text: msg.text, sender: msg.sender }, isMy);
         };
         
+        // اضافه کردن به ترتیب بر اساس تایم‌استمپ
         let inserted = false;
-        for(let i = 0; i < area.children.length; i++) {
-            const childId = area.children[i].dataset.messageId;
-            if(childId && parseInt(childId) > parseInt(messageId)) {
-                area.insertBefore(wrapper, area.children[i]);
-                inserted = true;
-                break;
+        const children = area.children;
+        for(let i = 0; i < children.length; i++) {
+            const childId = children[i].dataset.messageId;
+            if(childId) {
+                const childMsg = document.querySelector(`[data-message-id="${childId}"] .message-text`)?.innerText;
+                if(parseInt(childId) > parseInt(messageId)) {
+                    area.insertBefore(wrapper, children[i]);
+                    inserted = true;
+                    break;
+                }
             }
         }
         if(!inserted) area.appendChild(wrapper);
@@ -680,8 +715,6 @@
             markMessagesAsSeen();
         });
         db.ref('messages').on('child_changed', (snapshot) => {
-            const el = document.querySelector(`[data-message-id="${snapshot.key}"]`);
-            if(el) el.remove();
             renderMessage(snapshot.key, snapshot.val());
         });
         db.ref('messages').on('child_removed', (snapshot) => {
