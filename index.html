@@ -18,15 +18,14 @@
             overflow: hidden;
         }
 
-        /* ================= صفحه ورود با عکس زمینه ================= */
+        /* ================= صفحه ورود با گرادیان آبی ================= */
         .login-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000082a8720aa7656c36feffa591.png') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #0f2c52 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,65 +33,76 @@
         }
 
         .login-box {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-            border-radius: 30px;
-            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-radius: 40px;
+            padding: 30px 25px 40px 25px;
             width: 90%;
             max-width: 380px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        /* عکس بالای کادر ورود */
+        .login-avatar {
+            width: 110px;
+            height: 110px;
+            margin: -55px auto 15px auto;
+            background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000082a8720aa7656c36feffa591.png') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .login-box h2 {
-            margin-bottom: 25px;
-            color: white;
-            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1e3c72;
+            font-size: 26px;
         }
 
         .login-box input {
             width: 100%;
-            padding: 14px 16px;
-            margin: 12px 0;
-            border: none;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
             border-radius: 50px;
             font-size: 16px;
-            background: rgba(255,255,255,0.9);
+            background: #f8f9fa;
             outline: none;
             transition: 0.3s;
         }
 
         .login-box input:focus {
-            background: white;
-            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.3);
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.2);
         }
 
         .login-box button {
             width: 100%;
             padding: 14px;
-            background: #25d366;
+            background: linear-gradient(135deg, #25d366, #128c7e);
             color: white;
             border: none;
             border-radius: 50px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
             transition: 0.3s;
         }
 
         .login-box button:hover {
-            background: #20b859;
             transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
         }
 
         .error-msg {
-            color: #ff6b6b;
-            font-size: 14px;
-            margin-top: 15px;
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 12px;
             display: none;
-            text-shadow: 0 0 5px black;
         }
 
         /* ================= صفحه چت ================= */
@@ -106,7 +116,6 @@
             position: relative;
         }
         
-        /* لایه نیمه شفاف برای خوانایی بهتر متن پیام‌ها */
         .chat-container::before {
             content: '';
             position: absolute;
@@ -114,7 +123,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.25);
             pointer-events: none;
         }
 
@@ -122,7 +131,7 @@
             display: none !important;
         }
 
-        /* هدر با بنر زیبا */
+        /* هدر با بنر کشیده (درازتر) */
         .chat-header {
             background: linear-gradient(135deg, #075e54, #128c7e);
             padding: 12px 16px;
@@ -133,36 +142,38 @@
             flex-shrink: 0;
             position: relative;
             z-index: 2;
+            gap: 12px;
         }
         
         .banner-area {
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/IMG_%DB%B2%DB%B0%DB%B2%DB%B6%DB%B0%DB%B5%DB%B3%DB%B0_%DB%B1%DB%B7%DB%B2%DB%B0%DB%B5%DB%B5.png') no-repeat center center;
             background-size: cover;
-            height: 60px;
-            width: 100%;
-            max-width: 200px;
+            height: 55px;
+            flex: 2;
+            max-width: 280px;
+            min-width: 180px;
             border-radius: 30px;
-            margin: 0 auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin: 0 5px;
         }
 
         .online-info {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(0,0,0,0.4);
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 12px;
+            white-space: nowrap;
         }
 
         .online-light {
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             background: #25d366;
             border-radius: 50%;
             animation: blink 1.2s infinite;
-            box-shadow: 0 0 4px #25d366;
         }
 
         @keyframes blink {
@@ -171,28 +182,29 @@
         }
 
         .typing-status {
-            font-size: 11px;
+            font-size: 10px;
             color: #dcf8c6;
             background: rgba(0,0,0,0.5);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 20px;
+            white-space: nowrap;
         }
 
         .logout-btn {
             background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         /* منطقه پیام‌ها */
         .messages-area {
             flex: 1;
             overflow-y: auto;
-            padding: 16px 12px;
+            padding: 15px 12px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -216,8 +228,8 @@
 
         .message-bubble {
             max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 20px;
+            padding: 8px 12px;
+            border-radius: 18px;
             position: relative;
             cursor: pointer;
             transition: 0.2s;
@@ -225,26 +237,22 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* پیام خودم: آبی کم رنگ */
         .my-message .message-bubble {
-            background: rgba(37, 211, 102, 0.85);
+            background: rgba(37, 211, 102, 0.9);
             color: #1f2f2a;
-            border-bottom-right-radius: 5px;
-            backdrop-filter: blur(2px);
+            border-bottom-right-radius: 4px;
         }
 
-        /* پیام طرف مقابل: سفید یخی */
         .other-message .message-bubble {
-            background: rgba(248, 248, 255, 0.9);
+            background: rgba(248, 248, 255, 0.92);
             color: #111;
-            border-bottom-left-radius: 5px;
-            backdrop-filter: blur(2px);
+            border-bottom-left-radius: 4px;
         }
 
         .sender-name {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
         
         .other-message .sender-name {
@@ -252,17 +260,17 @@
         }
 
         .message-text {
-            font-size: 14px;
+            font-size: 13px;
             line-height: 1.4;
         }
 
         .message-info {
             font-size: 9px;
             color: #555;
-            margin-top: 5px;
+            margin-top: 4px;
             display: flex;
             justify-content: flex-end;
-            gap: 5px;
+            gap: 4px;
         }
         
         .my-message .message-info {
@@ -273,7 +281,7 @@
             color: #34b7f1;
         }
 
-        /* ========== کادر منو (وسط صفحه) ========== */
+        /* کادر منو وسط صفحه */
         .context-menu {
             position: fixed;
             top: 50%;
@@ -302,35 +310,35 @@
         }
 
         .reaction-bar {
-            padding: 12px;
+            padding: 10px;
             border-bottom: 1px solid #3a4a55;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
             background: #1a2429;
         }
 
         .reaction {
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
-            padding: 5px;
+            padding: 4px;
             transition: 0.15s;
         }
 
         .reaction:hover {
-            transform: scale(1.25);
+            transform: scale(1.2);
         }
 
         .menu-item {
-            padding: 14px 18px;
+            padding: 12px 16px;
             cursor: pointer;
             color: #f0f0f0;
             transition: 0.2s;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 15px;
+            gap: 10px;
+            font-size: 14px;
             border-bottom: 1px solid #2a3a45;
         }
 
@@ -346,38 +354,37 @@
             color: #ff8a7a;
         }
 
-        /* منطقه تایپ */
+        /* منطقه تایپ - کاملاً در دید */
         .input-area {
             display: flex;
-            padding: 12px 16px;
-            background: rgba(31, 28, 42, 0.85);
-            backdrop-filter: blur(10px);
-            gap: 12px;
+            padding: 12px 15px;
+            background: rgba(31, 28, 42, 0.9);
+            backdrop-filter: blur(12px);
+            gap: 10px;
             flex-shrink: 0;
             z-index: 2;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.15);
         }
 
         .message-input {
             flex: 1;
-            padding: 12px 18px;
+            padding: 11px 16px;
             border: none;
             border-radius: 30px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             color: #111;
             outline: none;
             font-family: inherit;
-            font-size: 15px;
+            font-size: 14px;
         }
 
-        /* دکمه ارسال با عکس شما */
         .send-btn {
             background: transparent;
             border: none;
             padding: 0;
             cursor: pointer;
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/IMG_%DB%B2%DB%B0%DB%B2%DB%B6%DB%B0%DB%B5%DB%B3%DB%B0_%DB%B1%DB%B7%DB%B2%DB%B9%DB%B2%DB%B6.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -390,31 +397,48 @@
             transform: scale(1.05);
         }
         
-        /* تنظیمات ریسپانسیو برای گوشی */
+        /* ریسپانسیو برای گوشی */
         @media (max-width: 600px) {
             .message-bubble {
                 max-width: 85%;
             }
             .banner-area {
                 height: 45px;
-                max-width: 150px;
+                max-width: 200px;
+                min-width: 130px;
             }
             .context-menu {
                 width: 85%;
                 min-width: auto;
             }
             .reaction {
-                font-size: 26px;
+                font-size: 24px;
+            }
+            .online-info span {
+                font-size: 10px;
+            }
+            .typing-status {
+                font-size: 9px;
+            }
+            .input-area {
+                padding: 10px 12px;
+            }
+            .message-input {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+            .send-btn {
+                width: 44px;
+                height: 44px;
             }
         }
         
-        /* اسکرول زیبا */
+        /* اسکرول */
         .messages-area::-webkit-scrollbar {
-            width: 5px;
+            width: 4px;
         }
         .messages-area::-webkit-scrollbar-track {
             background: rgba(0,0,0,0.2);
-            border-radius: 10px;
         }
         .messages-area::-webkit-scrollbar-thumb {
             background: #25d366;
@@ -424,9 +448,10 @@
 </head>
 <body>
 
-    <!-- صفحه ورود با عکس زمینه -->
+    <!-- صفحه ورود -->
     <div id="loginPage" class="login-container">
         <div class="login-box">
+            <div class="login-avatar"></div>
             <h2>📱 پیام‌رسان</h2>
             <input type="text" id="username" placeholder="نام کاربری">
             <input type="password" id="password" placeholder="رمز عبور">
@@ -479,7 +504,6 @@
         let currentUser = null;
         let contextMenuDiv = null;
 
-        // حذف منو
         function hideContextMenu() {
             if (contextMenuDiv) {
                 contextMenuDiv.remove();
@@ -487,14 +511,12 @@
             }
         }
 
-        // نمایش منو وسط صفحه
         function showContextMenu(message, isMyMessage) {
             hideContextMenu();
             
             contextMenuDiv = document.createElement('div');
             contextMenuDiv.className = 'context-menu';
             
-            // ری اکشن‌ها فقط برای پیام بقیه
             if (!isMyMessage) {
                 const reactions = ['😱', '😭', '🤣', '😁', '🩷', '🔥', '🌹', '😈', '🙈', '🍌', '🤷', '😘'];
                 const reactionBar = document.createElement('div');
@@ -513,7 +535,6 @@
                 contextMenuDiv.appendChild(reactionBar);
             }
             
-            // گزینه‌های مشترک
             const copyItem = createMenuItem('📋 کپی متن', () => {
                 navigator.clipboard.writeText(message.text);
                 hideContextMenu();
@@ -536,7 +557,6 @@
                 }, true);
                 contextMenuDiv.appendChild(deleteItem);
             } else {
-                // پیام خودم
                 const editItem = createMenuItem('✏️ ویرایش', () => {
                     const newText = prompt('متن جدید:', message.text);
                     if (newText && newText.trim()) {
@@ -564,11 +584,6 @@
             }
             
             document.body.appendChild(contextMenuDiv);
-            
-            // اطمینان از نمایش در صفحه (گارد اضافی)
-            const menuRect = contextMenuDiv.getBoundingClientRect();
-            if (menuRect.top < 20) contextMenuDiv.style.top = '20px';
-            if (menuRect.bottom > window.innerHeight - 20) contextMenuDiv.style.top = (window.innerHeight - menuRect.height - 20) + 'px';
         }
         
         function createMenuItem(text, onClick, isDanger = false) {
@@ -579,16 +594,12 @@
             return div;
         }
         
-        // ری اکشن، ویرایش، حذف
         function addReaction(messageId, emoji) {
             db.ref(`messages/${messageId}/reactions/${currentUser}`).set(emoji);
         }
         
         function editMessage(messageId, newText) {
-            db.ref(`messages/${messageId}`).update({
-                text: newText,
-                edited: true
-            });
+            db.ref(`messages/${messageId}`).update({ text: newText, edited: true });
         }
         
         function deleteMessage(messageId) {
@@ -598,22 +609,18 @@
         function deleteAllMyMessages() {
             db.ref('messages').once('value', (snapshot) => {
                 snapshot.forEach((child) => {
-                    const msg = child.val();
-                    if (msg.sender === currentUser) {
+                    if (child.val().sender === currentUser) {
                         db.ref(`messages/${child.key}`).remove();
                     }
                 });
             });
         }
         
-        // ارسال پیام
         function sendMessage() {
             const input = document.getElementById('messageInput');
             const text = input.value.trim();
             if (!text || !currentUser) return;
-            
-            const newMessageRef = db.ref('messages').push();
-            newMessageRef.set({
+            db.ref('messages').push({
                 text: text,
                 sender: currentUser,
                 timestamp: Date.now(),
@@ -624,7 +631,6 @@
             stopTyping();
         }
         
-        // تایپینگ
         let typingTimeout;
         function startTyping() {
             if (!currentUser) return;
@@ -638,7 +644,6 @@
             db.ref(`typing/${currentUser}`).remove();
         }
         
-        // نمایش پیام‌ها
         function renderMessage(messageId, msg) {
             const area = document.getElementById('messagesArea');
             const isMy = msg.sender === currentUser;
@@ -652,28 +657,25 @@
             let reactionsHtml = '';
             if (msg.reactions && Object.keys(msg.reactions).length > 0) {
                 const reactionList = Object.values(msg.reactions);
-                const uniqueReactions = [...new Set(reactionList)];
-                reactionsHtml = `<div style="display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap;">${uniqueReactions.map(r => `<span style="font-size: 18px;">${r}</span>`).join('')}</div>`;
+                const unique = [...new Set(reactionList)];
+                reactionsHtml = `<div style="display: flex; gap: 5px; margin-top: 5px;">${unique.map(r => `<span style="font-size: 16px;">${r}</span>`).join('')}</div>`;
             }
             
             bubble.innerHTML = `
                 ${!isMy ? `<div class="sender-name">${msg.sender}</div>` : ''}
-                <div class="message-text">${escapeHtml(msg.text)}${msg.edited ? ' <span style="font-size: 9px;">(ویرایش شده)</span>' : ''}</div>
+                <div class="message-text">${escapeHtml(msg.text)}${msg.edited ? ' <span style="font-size: 9px;">(ویرایش)</span>' : ''}</div>
                 <div class="message-info">
                     <span>${new Date(msg.timestamp).toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'})}</span>
                     ${isMy ? `<span class="tick ${msg.seen ? 'tick-seen' : ''}">${msg.seen ? '✓✓' : '✓'}</span>` : ''}
                 </div>
                 ${reactionsHtml}
             `;
-            
             wrapper.appendChild(bubble);
-            
             bubble.onclick = (e) => {
                 e.stopPropagation();
                 showContextMenu({ id: messageId, text: msg.text, sender: msg.sender }, isMy);
             };
             
-            // اضافه کردن به ترتیب
             let inserted = false;
             const children = area.children;
             for (let i = 0; i < children.length; i++) {
@@ -694,31 +696,24 @@
             return div.innerHTML;
         }
         
-        // وضعیت آنلاین
         function setOnlineStatus(isOnline) {
             if (!currentUser) return;
-            db.ref(`users/${currentUser}`).set({
-                online: isOnline,
-                lastSeen: Date.now()
-            });
+            db.ref(`users/${currentUser}`).set({ online: isOnline, lastSeen: Date.now() });
             if (!isOnline) stopTyping();
         }
         
         function updateOnlineUsers() {
             db.ref('users').on('value', (snapshot) => {
                 let onlineCount = 0;
-                snapshot.forEach((child) => {
-                    if (child.val().online) onlineCount++;
-                });
+                snapshot.forEach(child => { if (child.val().online) onlineCount++; });
                 document.getElementById('onlineUsers').innerHTML = `${onlineCount} آنلاین`;
             });
         }
         
         function markMessagesAsSeen() {
             db.ref('messages').orderByChild('seen').equalTo(false).once('value', (snapshot) => {
-                snapshot.forEach((child) => {
-                    const msg = child.val();
-                    if (msg.sender !== currentUser) {
+                snapshot.forEach(child => {
+                    if (child.val().sender !== currentUser) {
                         db.ref(`messages/${child.key}/seen`).set(true);
                     }
                 });
@@ -731,30 +726,23 @@
                 markMessagesAsSeen();
             });
             db.ref('messages').on('child_changed', (snapshot) => {
-                const existing = document.querySelector(`[data-message-id="${snapshot.key}"]`);
-                if (existing) existing.remove();
+                const el = document.querySelector(`[data-message-id="${snapshot.key}"]`);
+                if (el) el.remove();
                 renderMessage(snapshot.key, snapshot.val());
             });
             db.ref('messages').on('child_removed', (snapshot) => {
-                const existing = document.querySelector(`[data-message-id="${snapshot.key}"]`);
-                if (existing) existing.remove();
+                const el = document.querySelector(`[data-message-id="${snapshot.key}"]`);
+                if (el) el.remove();
             });
         }
         
         function listenTyping() {
             db.ref('typing').on('value', (snapshot) => {
                 const typingUsers = [];
-                snapshot.forEach((child) => {
-                    if (child.key !== currentUser && child.val() === true) {
-                        typingUsers.push(child.key);
-                    }
+                snapshot.forEach(child => {
+                    if (child.key !== currentUser && child.val() === true) typingUsers.push(child.key);
                 });
-                const typingStatusSpan = document.getElementById('typingStatus');
-                if (typingUsers.length > 0) {
-                    typingStatusSpan.innerHTML = `${typingUsers.join('، ')} در حال نوشتن...`;
-                } else {
-                    typingStatusSpan.innerHTML = '';
-                }
+                document.getElementById('typingStatus').innerHTML = typingUsers.length ? `${typingUsers.join('، ')} در حال نوشتن...` : '';
             });
         }
         
@@ -765,10 +753,9 @@
             document.getElementById('loginPage').classList.remove('hidden');
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-            if (window.onbeforeunload) window.onbeforeunload = null;
         }
         
-        // ========== رویدادها ==========
+        // رویدادها
         document.getElementById('loginBtn').onclick = () => {
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
