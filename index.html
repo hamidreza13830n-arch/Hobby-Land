@@ -106,6 +106,7 @@
         }
         .hidden { display: none !important; }
 
+        /* هدر */
         .chat-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -149,46 +150,21 @@
             letter-spacing: 1px;
         }
         
-        /* انیمیشن سه نقطه برای در حال نوشتن */
-        .typing-indicator {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-            padding: 8px 20px;
-            border-radius: 40px;
-            position: fixed;
-            bottom: 85px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 101;
-            border: 1px solid rgba(192, 132, 252, 0.5);
-            box-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
-        }
-        .typing-indicator .dot {
-            width: 8px;
-            height: 8px;
-            background: #c084fc;
-            border-radius: 50%;
-            display: inline-block;
-            animation: typingWave 1.4s infinite ease-in-out both;
-        }
-        .typing-indicator .dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator .dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes typingWave {
-            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-            40% { transform: scale(1.1); opacity: 1; }
-        }
-        .typing-text {
-            color: #c084fc;
+        /* نوار در حال نوشتن - زیر هدر */
+        .typing-bar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
             font-size: 12px;
-            margin-left: 6px;
+            color: #c084fc;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 2;
+            text-align: center;
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        /* منطقه پیام‌ها - با فضای خالی کافی که پیام زیر کادر نره */
+        /* منطقه پیام‌ها */
         .messages-area {
             flex: 1;
             overflow-y: auto;
@@ -198,12 +174,7 @@
             gap: 8px;
             z-index: 1;
             position: relative;
-            padding-bottom: 100px;
-        }
-        
-        /* اسکرول خودکار به پایین */
-        .messages-area {
-            scroll-behavior: smooth;
+            padding-bottom: 160px;
         }
         
         .message-wrapper { display: flex; width: 100%; margin-bottom: 4px; }
@@ -238,25 +209,6 @@
         .my-message .message-info { color: #d0eaff; }
         .other-message .message-info { color: #777; }
         .tick-seen { color: #34b7f1; }
-        
-        /* پیام سیستم */
-        .system-message {
-            text-align: center;
-            font-size: 11px;
-            color: #ff6b6b;
-            background: rgba(0,0,0,0.6);
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin: 5px auto;
-            display: inline-block;
-            width: auto;
-            backdrop-filter: blur(4px);
-        }
-        .system-wrapper {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
         
         .reply-preview {
             background: rgba(0,0,0,0.08); border-radius: 12px; padding: 5px 8px; margin-bottom: 6px;
@@ -328,9 +280,9 @@
             .online-count { font-size: 18px; margin-left: 8px; margin-top: -4px; }
             .message-bubble { max-width: 85%; }
             .send-btn { width: 42px; height: 42px; }
-            .typing-indicator { bottom: 72px; padding: 6px 14px; }
-            .messages-area { padding-bottom: 85px; }
+            .messages-area { padding-bottom: 140px; }
             .login-logo { width: 130px; height: 130px; margin-top: -75px; }
+            .typing-bar { font-size: 10px; padding: 4px 12px; }
         }
         .messages-area::-webkit-scrollbar { width: 4px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
@@ -358,6 +310,8 @@
         </div>
     </div>
     
+    <div id="typingBar" class="typing-bar"></div>
+    
     <div class="messages-area" id="messagesArea"></div>
     
     <div class="input-container">
@@ -373,14 +327,6 @@
             <button class="send-btn" id="sendBtn"></button>
         </div>
     </div>
-</div>
-
-<!-- نشانگر در حال نوشتن -->
-<div id="typingIndicator" class="typing-indicator">
-    <span class="typing-text">در حال نوشتن</span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -406,12 +352,10 @@
     let isOnline = false;
     let onlineRef = null;
     let typingCheckInterval = null;
-    let screenshotInterval = null;
 
     function hideContextMenu() { if(contextMenuDiv) { contextMenuDiv.remove(); contextMenuDiv = null; } }
     function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
 
-    // اسکرول به پایین (با رعایت فاصله از کادر تایپ)
     function scrollToBottom() {
         const messagesArea = document.getElementById('messagesArea');
         if(messagesArea) {
@@ -419,48 +363,6 @@
         }
     }
 
-    // ========== تشخیص اسکرین شات ==========
-    function initScreenshotDetection() {
-        let lastHiddenTime = null;
-        let warnedRecently = false;
-        
-        function detectScreenshot() {
-            if (!currentUser) return;
-            
-            if (document.hidden) {
-                lastHiddenTime = Date.now();
-            }
-            
-            if (!document.hidden && lastHiddenTime !== null) {
-                const hiddenDuration = Date.now() - lastHiddenTime;
-                if (hiddenDuration > 80 && hiddenDuration < 800 && !warnedRecently) {
-                    warnedRecently = true;
-                    
-                    const warningText = `⚠️ ${currentUser} از چت اسکرین شات گرفت!`;
-                    db.ref('messages').push({
-                        text: warningText,
-                        sender: 'سیستم',
-                        timestamp: Date.now(),
-                        seen: false,
-                        reactions: {},
-                        isSystemMessage: true
-                    });
-                    
-                    setTimeout(() => {
-                        alert('⚠️ اسکرین شات گرفته شد و در چت ثبت گردید!');
-                    }, 100);
-                    
-                    setTimeout(() => { warnedRecently = false; }, 3000);
-                }
-                lastHiddenTime = null;
-            }
-        }
-        
-        if (screenshotInterval) clearInterval(screenshotInterval);
-        screenshotInterval = setInterval(detectScreenshot, 300);
-    }
-
-    // ========== سیستم آنلاین ==========
     function setUserOnline() {
         if(!currentUser) return;
         isOnline = true;
@@ -666,16 +568,6 @@
         const area = document.getElementById('messagesArea');
         if(!area) return;
         
-        // پیام سیستم
-        if(msg.sender === 'سیستم') {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'system-wrapper';
-            wrapper.innerHTML = `<div class="system-message">⚠️ ${escapeHtml(msg.text)}</div>`;
-            area.appendChild(wrapper);
-            scrollToBottom();
-            return;
-        }
-        
         const existingMsg = document.querySelector(`[data-message-id="${messageId}"]`);
         if(existingMsg) {
             const bubble = existingMsg.querySelector('.message-bubble');
@@ -798,23 +690,28 @@
         });
     }
 
-    // ========== تشخیص در حال نوشتن (تایپینگ) ==========
+    // در حال نوشتن - نمایش اسم کاربر واقعی
     function listenTyping() {
         db.ref('typing').on('value', (snapshot) => {
-            let isSomeoneTyping = false;
+            let typingUser = null;
             snapshot.forEach(child => { 
                 if(child.key !== currentUser && child.val() === true) {
-                    isSomeoneTyping = true;
+                    typingUser = child.key;
                 }
             });
-            const typingDiv = document.getElementById('typingIndicator');
-            if(typingDiv) {
-                typingDiv.style.display = isSomeoneTyping ? 'flex' : 'none';
+            const typingBar = document.getElementById('typingBar');
+            if(typingBar) {
+                if(typingUser) {
+                    typingBar.innerHTML = `✍️ ${typingUser} در حال نوشتن...`;
+                    typingBar.style.display = 'block';
+                } else {
+                    typingBar.innerHTML = '';
+                    typingBar.style.display = 'none';
+                }
             }
         });
     }
 
-    // ورود
     document.getElementById('loginBtn').onclick = () => {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
@@ -827,8 +724,8 @@
             updateOnlineUsers();
             listenMessages();
             listenTyping();
-            initScreenshotDetection();
             document.getElementById('messagesArea').innerHTML = '';
+            scrollToBottom();
         } else {
             const err = document.getElementById('errorMsg');
             err.style.display = 'block';
