@@ -18,14 +18,14 @@
             overflow: hidden;
         }
 
-        /* ================= صفحه ورود با گیف پس زمینه ================= */
+        /* ================= صفحه ورود با گیف جدید ================= */
         .login-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000640c71f88b100e7f56cbb09d.png?raw=true') no-repeat center center fixed;
+            background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/hobbyland_floating_background.gif') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -41,13 +41,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .login-box {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-radius: 40px;
+            backdrop-filter: blur(10px);
+            border-radius: 45px;
             padding: 30px 25px 40px;
             width: 90%;
             max-width: 380px;
@@ -57,32 +57,45 @@
             z-index: 1;
         }
 
-        /* لوگوی بالای کادر ورود */
+        /* لوگوی دایره‌ای بزرگ - نصفش بیرون کادر */
         .login-logo {
-            width: 100px;
-            height: 100px;
-            margin: -55px auto 15px auto;
+            width: 130px;
+            height: 130px;
+            margin: -75px auto 10px auto;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000017e871f89c0d959cc013167b%20(1).png') no-repeat center center;
-            background-size: contain;
+            background-size: cover;
             border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
         }
 
-        .login-box h2 { margin-bottom: 20px; color: #1e3c72; font-size: 26px; }
+        .login-box h2 { 
+            margin-bottom: 20px; 
+            color: #1e3c72; 
+            font-size: 26px;
+            font-weight: 700;
+        }
         .login-box input {
             width: 100%; padding: 14px 18px; margin: 10px 0; border: 1px solid #ddd;
             border-radius: 50px; font-size: 16px; background: #f8f9fa; outline: none;
+            transition: 0.2s;
         }
         .login-box input:focus {
             border-color: #25d366;
+            box-shadow: 0 0 0 3px rgba(37,211,102,0.2);
         }
         .login-box button {
             width: 100%; padding: 14px; background: linear-gradient(135deg, #25d366, #128c7e);
             color: white; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer;
             margin-top: 15px;
+            transition: 0.2s;
+        }
+        .login-box button:hover {
+            transform: scale(1.02);
         }
         .error-msg { color: #dc3545; font-size: 13px; margin-top: 12px; display: none; }
 
-        /* ================= صفحه چت با عکس زمینه جدید ================= */
+        /* ================= صفحه چت ================= */
         .chat-container {
             width: 100%; height: 100vh; display: flex; flex-direction: column;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000640c71f88b100e7f56cbb09d.png?raw=true') no-repeat center center fixed;
@@ -98,19 +111,30 @@
 
         /* هدر */
         .chat-header {
-            background: white; padding: 12px 16px; display: flex; justify-content: space-between;
-            align-items: center; border-bottom: 1px solid rgba(0,0,0,0.08); z-index: 2; gap: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            z-index: 2;
+            gap: 12px;
         }
         .banner-area {
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/IMG_%DB%B2%DB%B0%DB%B2%DB%B6%DB%B0%DB%B5%DB%B3%DB%B0_%DB%B1%DB%B8%DB%B2%DB%B3%DB%B2%DB%B8.png') no-repeat center center;
-            background-size: contain; background-repeat: no-repeat; height: 70px; flex: 1; max-width: 350px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 70px;
+            flex: 1;
+            max-width: 350px;
         }
         
-        /* کادر آنلاین بزرگ با عدد کوچک داخلش */
+        /* کادر آنلاین با حاشیه نئونی زیبا */
         .online-box {
             position: relative;
-            width: 220px;
-            height: 85px;
+            width: 210px;
+            height: 80px;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000446871fd9d03516007d5fe16.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -118,14 +142,18 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            border-radius: 20px;
+            box-shadow: 0 0 8px rgba(192, 132, 252, 0.5), 0 0 15px rgba(192, 132, 252, 0.2);
+            transition: box-shadow 0.3s ease;
         }
         .online-count {
             color: #c084fc;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: bold;
             margin-left: 12px;
-            margin-top: -8px;
+            margin-top: -6px;
             letter-spacing: 1px;
+            text-shadow: 0 0 3px rgba(192, 132, 252, 0.5);
         }
         
         /* انیمیشن سه نقطه برای در حال نوشتن */
@@ -133,15 +161,17 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
-            padding: 8px 16px;
-            border-radius: 30px;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(12px);
+            padding: 8px 18px;
+            border-radius: 40px;
             position: fixed;
             bottom: 85px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 101;
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            box-shadow: 0 0 12px rgba(192, 132, 252, 0.3);
         }
         .typing-dots span {
             width: 8px;
@@ -151,16 +181,17 @@
             display: inline-block;
             animation: typing 1.4s infinite ease-in-out both;
         }
-        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(3) { animation-delay: -0.16s; }
         @keyframes typing {
-            0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-            40% { transform: scale(1.2); opacity: 1; }
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1.1); opacity: 1; }
         }
         .typing-text {
             color: #c084fc;
             font-size: 12px;
             margin-left: 6px;
+            font-weight: 500;
         }
 
         /* منطقه پیام‌ها */
@@ -231,26 +262,39 @@
             background: none; border: none; font-size: 18px; cursor: pointer; color: #777;
         }
 
-        /* کادر تایپ پیام */
+        /* کادر تایپ پیام - با حاشیه نئونی */
         .input-container {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: white; z-index: 100; border-top: 1px solid #ddd;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-top: 1px solid rgba(192, 132, 252, 0.3);
+            box-shadow: 0 -4px 15px rgba(192, 132, 252, 0.15);
             padding-bottom: env(safe-area-inset-bottom, 0);
         }
         .input-wrapper {
             display: flex; padding: 12px 15px; gap: 12px;
         }
         .message-input {
-            flex: 1; padding: 12px 18px; border: 1px solid #ddd; border-radius: 30px;
-            background: #f8f9fa; outline: none; font-family: inherit; font-size: 14px;
+            flex: 1; padding: 12px 18px; border: 1px solid rgba(192, 132, 252, 0.4);
+            border-radius: 35px;
+            background: rgba(255, 255, 255, 0.9);
+            outline: none; font-family: inherit; font-size: 14px;
+            transition: 0.2s;
+            box-shadow: 0 0 5px rgba(192, 132, 252, 0.2);
         }
-        .message-input:focus { border-color: #25d366; background: white; }
+        .message-input:focus {
+            border-color: #c084fc;
+            box-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+            background: white;
+        }
         .send-btn {
             background: transparent; border: none; padding: 0; cursor: pointer;
             width: 48px; height: 48px;
             background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000a2f871fda366f0a9ff6a56b0.png');
             background-size: contain; background-repeat: no-repeat; background-position: center;
             transition: transform 0.1s;
+            filter: drop-shadow(0 0 4px #c084fc);
         }
         .send-btn:active { transform: scale(0.95); }
 
@@ -258,7 +302,8 @@
         .context-menu {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: #1f2a2f; backdrop-filter: blur(20px); border-radius: 24px;
-            z-index: 2000; min-width: 260px; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);
+            z-index: 2000; min-width: 260px; overflow: hidden; border: 1px solid rgba(192, 132, 252, 0.4);
+            box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
         }
         .reaction-bar { padding: 10px; border-bottom: 1px solid #3a4a55; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; background: #1a2429; }
         .reaction { font-size: 26px; cursor: pointer; padding: 4px; transition: 0.1s; }
@@ -268,15 +313,16 @@
         
         @media (max-width: 600px) {
             .banner-area { height: 50px; max-width: 200px; }
-            .online-box { width: 180px; height: 70px; }
-            .online-count { font-size: 22px; margin-left: 8px; margin-top: -6px; }
+            .online-box { width: 170px; height: 65px; }
+            .online-count { font-size: 18px; margin-left: 8px; margin-top: -4px; }
             .message-bubble { max-width: 85%; }
             .send-btn { width: 42px; height: 42px; }
-            .typing-dots { bottom: 75px; }
+            .typing-dots { bottom: 72px; padding: 6px 14px; }
+            .login-logo { width: 110px; height: 110px; margin-top: -65px; }
         }
         .messages-area::-webkit-scrollbar { width: 4px; }
-        .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
-        .messages-area::-webkit-scrollbar-thumb { background: #25d366; border-radius: 10px; }
+        .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        .messages-area::-webkit-scrollbar-thumb { background: #c084fc; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -317,7 +363,7 @@
     </div>
 </div>
 
-<!-- نشانگر در حال نوشتن با انیمیشن سه نقطه -->
+<!-- نشانگر در حال نوشتن -->
 <div id="typingIndicator" style="display: none;" class="typing-dots">
     <span class="typing-text">در حال نوشتن</span>
     <span></span><span></span><span></span>
@@ -350,7 +396,7 @@
     function hideContextMenu() { if(contextMenuDiv) { contextMenuDiv.remove(); contextMenuDiv = null; } }
     function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
 
-    // ========== سیستم آنلاین فوق‌العاده دقیق ==========
+    // سیستم آنلاین دقیق
     function setUserOnline() {
         if(!currentUser) return;
         isOnline = true;
@@ -362,7 +408,6 @@
             chatActive: true
         });
         
-        // هر 10 ثانیه یکبار تمدید کن (فقط اگه صفحه فعال باشه)
         if(typingCheckInterval) clearInterval(typingCheckInterval);
         typingCheckInterval = setInterval(() => {
             if(currentUser && isOnline && !document.hidden) {
@@ -384,7 +429,6 @@
         db.ref(`typing/${currentUser}`).remove();
     }
     
-    // پاکسازی کاربرانی که خروج نرمال نداشتن (بیشتر از 15 ثانیه فعالیت نداشتن)
     function cleanStaleUsers() {
         const now = Date.now();
         db.ref('users').once('value', (snapshot) => {
@@ -404,7 +448,6 @@
     function initOnlineTracking() {
         window.addEventListener('beforeunload', () => { setUserOffline(); });
         
-        // وقتی صفحه فعال/غیرفعال میشه
         document.addEventListener('visibilitychange', () => {
             if(document.hidden) {
                 setUserOffline();
@@ -414,7 +457,6 @@
             }
         });
         
-        // قطع و وصل شدن اینترنت
         window.addEventListener('offline', () => { setUserOffline(); });
         window.addEventListener('online', () => { if(currentUser) setTimeout(() => setUserOnline(), 500); });
     }
@@ -663,7 +705,6 @@
         });
     }
 
-    // ورود
     document.getElementById('loginBtn').onclick = () => {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
