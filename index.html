@@ -83,7 +83,7 @@
         }
         .error-msg { color: #dc3545; font-size: 13px; margin-top: 12px; display: none; }
 
-        /* صفحه چت */
+        /* صفحه چت - طراحی از نو */
         .chat-container {
             width: 100%;
             height: 100vh;
@@ -106,7 +106,6 @@
             align-items: center;
             border-bottom: 1px solid rgba(192, 132, 252, 0.5);
             box-shadow: 0 0 8px rgba(192, 132, 252, 0.3);
-            z-index: 10;
             gap: 8px;
             flex-shrink: 0;
         }
@@ -140,7 +139,6 @@
             margin-top: -4px;
         }
         
-        /* نوار در حال نوشتن */
         .typing-bar {
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
@@ -153,26 +151,22 @@
             border-bottom: 1px solid rgba(192, 132, 252, 0.3);
         }
 
-        /* ========== راه حل نهایی ========== */
-        /* محاسبه ارتفاع با calc */
+        /* ========== راه حل نهایی و ساده ========== */
         .messages-area {
-            height: calc(100vh - 150px);
+            flex: 1;
             overflow-y: auto;
             padding: 12px;
             display: flex;
             flex-direction: column;
             gap: 6px;
-            position: relative;
+            /* فضای خالی بزرگ پایین برای جلوگیری از زیر کادر رفتن پیام */
+            padding-bottom: 70px;
         }
         
         .input-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
             background: white;
             border-top: 1px solid #ddd;
-            z-index: 100;
+            flex-shrink: 0;
         }
         .input-wrapper {
             display: flex; 
@@ -277,7 +271,7 @@
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
             .typing-bar { font-size: 10px; padding: 4px 10px; }
-            .messages-area { height: calc(100vh - 140px); }
+            .messages-area { padding-bottom: 65px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
