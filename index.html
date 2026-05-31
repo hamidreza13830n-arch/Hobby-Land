@@ -118,9 +118,6 @@
             background: #0f3460;
             color: #a0c4ff;
         }
-        body.night-mode .messages-area {
-            background: transparent;
-        }
         body.night-mode .other-message .message-bubble {
             background: #1e2a47;
             color: #e0e0e0;
@@ -143,7 +140,7 @@
         
         .hidden { display: none !important; }
 
-        /* هدر با تنظیمات جدید */
+        /* هدر */
         .chat-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -158,7 +155,7 @@
             transition: background 0.3s;
         }
         
-        /* دکمه حالت روز/شب - سمت چپ */
+        /* دکمه حالت روز/شب */
         .theme-toggle {
             background: transparent;
             border: none;
@@ -175,8 +172,9 @@
             transform: scale(0.95);
         }
         
+        /* بنر جدید */
         .banner-area {
-            background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/IMG_%DB%B2%DB%B0%DB%B2%DB%B6%DB%B0%DB%B5%DB%B3%DB%B0_%DB%B1%DB%B8%DB%B2%DB%B3%DB%B2%DB%B8.png') no-repeat center center;
+            background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000027ec71f48c9d47dd4836cccc.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
             height: 55px;
@@ -235,8 +233,8 @@
         
         /* ========== ترتیب پیام‌ها درست مثل تلگرام ========== */
         .message-wrapper { display: flex; width: 100%; margin-bottom: 2px; }
-        .message-wrapper.my-message { justify-content: flex-end; }
-        .message-wrapper.other-message { justify-content: flex-start; }
+        .message-wrapper.my-message { justify-content: flex-end; }  /* خودم راست */
+        .message-wrapper.other-message { justify-content: flex-start; }  /* بقیه چپ */
         
         .message-bubble {
             max-width: 80%;
@@ -314,6 +312,7 @@
         .message-input:focus {
             border-color: #c084fc;
         }
+        /* دکمه ارسال جدید */
         .send-btn {
             background: transparent; 
             border: none; 
@@ -321,7 +320,7 @@
             cursor: pointer;
             width: 44px; 
             height: 44px;
-            background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000a2f871fda366f0a9ff6a56b0.png');
+            background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000afcc720a9ed6e8e8a468856b.png');
             background-size: contain; 
             background-repeat: no-repeat; 
             background-position: center;
@@ -448,7 +447,6 @@
         setTheme(isDarkMode);
     }
     
-    // بارگذاری تم ذخیره شده
     const savedTheme = localStorage.getItem('hobbyLandTheme');
     if(savedTheme === 'dark') {
         isDarkMode = true;
