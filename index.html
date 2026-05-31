@@ -141,28 +141,28 @@
             margin-top: -4px;
         }
         
-        /* ========== در حال نوشتن - زیر هدر، وسط، چسبیده ========== */
+        /* ========== در حال نوشتن - دقیقاً وسط، زیر هدر ========== */
         .typing-bar {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 8px 12px;
-            font-size: 12px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            padding: 6px 12px;
+            font-size: 11px;
             color: #c084fc;
             text-align: center;
             flex-shrink: 0;
             display: none;
-            border-bottom: 1px solid rgba(192, 132, 252, 0.4);
+            border-bottom: 1px solid rgba(192, 132, 252, 0.3);
             font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
-        /* ========== راه حل نهایی: Fixed + Padding ========== */
+        /* ========== منطقه پیام‌ها ========== */
         .messages-area {
             position: fixed;
-            top: 120px; /* فضای هدر */
+            top: 120px;
             left: 0;
             right: 0;
-            bottom: 70px; /* فضای کادر تایپ */
+            bottom: 70px;
             overflow-y: auto;
             padding: 12px;
             display: flex;
@@ -170,49 +170,7 @@
             gap: 6px;
         }
         
-        /* کادر تایپ - ثابت در پایین */
-        .input-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            border-top: 1px solid #ddd;
-            z-index: 20;
-        }
-        .input-wrapper {
-            display: flex; 
-            padding: 10px 12px; 
-            gap: 10px;
-            align-items: center;
-        }
-        .message-input {
-            flex: 1; 
-            padding: 12px 16px; 
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            background: white;
-            outline: none; 
-            font-family: inherit; 
-            font-size: 14px;
-        }
-        .message-input:focus {
-            border-color: #c084fc;
-        }
-        .send-btn {
-            background: transparent; 
-            border: none; 
-            padding: 0; 
-            cursor: pointer;
-            width: 44px; 
-            height: 44px;
-            background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000a2f871fda366f0a9ff6a56b0.png');
-            background-size: contain; 
-            background-repeat: no-repeat; 
-            background-position: center;
-            flex-shrink: 0;
-        }
-        
+        /* ========== ترتیب پیام‌ها: خودم راست، بقیه چپ ========== */
         .message-wrapper { display: flex; width: 100%; margin-bottom: 2px; }
         .message-wrapper.my-message { justify-content: flex-end; }
         .message-wrapper.other-message { justify-content: flex-start; }
@@ -262,6 +220,49 @@
             background: none; border: none; font-size: 16px; cursor: pointer; color: #777;
         }
 
+        /* کادر تایپ */
+        .input-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #ddd;
+            z-index: 20;
+        }
+        .input-wrapper {
+            display: flex; 
+            padding: 10px 12px; 
+            gap: 10px;
+            align-items: center;
+        }
+        .message-input {
+            flex: 1; 
+            padding: 12px 16px; 
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background: white;
+            outline: none; 
+            font-family: inherit; 
+            font-size: 14px;
+        }
+        .message-input:focus {
+            border-color: #c084fc;
+        }
+        .send-btn {
+            background: transparent; 
+            border: none; 
+            padding: 0; 
+            cursor: pointer;
+            width: 44px; 
+            height: 44px;
+            background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000a2f871fda366f0a9ff6a56b0.png');
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center;
+            flex-shrink: 0;
+        }
+
         .context-menu {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: #1f2a2f; backdrop-filter: blur(20px); border-radius: 24px;
@@ -283,7 +284,7 @@
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
             .messages-area { top: 110px; bottom: 65px; }
-            .typing-bar { padding: 6px 10px; font-size: 11px; }
+            .typing-bar { padding: 5px 10px; font-size: 10px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
@@ -311,7 +312,7 @@
         </div>
     </div>
     
-    <!-- در حال نوشتن - دقیقاً زیر هدر -->
+    <!-- در حال نوشتن - اینجا وسط -->
     <div id="typingBar" class="typing-bar"></div>
     
     <div class="messages-area" id="messagesArea"></div>
@@ -360,9 +361,7 @@
 
     function scrollToBottom() {
         const area = document.getElementById('messagesArea');
-        if(area) {
-            area.scrollTop = area.scrollHeight;
-        }
+        if(area) area.scrollTop = area.scrollHeight;
     }
 
     function setUserOnline() {
@@ -370,11 +369,7 @@
         isOnline = true;
         if(onlineRef) onlineRef.off();
         onlineRef = db.ref(`users/${currentUser}`);
-        onlineRef.set({
-            online: true,
-            lastSeen: firebase.database.ServerValue.TIMESTAMP,
-            chatActive: true
-        });
+        onlineRef.set({ online: true, lastSeen: firebase.database.ServerValue.TIMESTAMP, chatActive: true });
         if(typingCheckInterval) clearInterval(typingCheckInterval);
         typingCheckInterval = setInterval(() => {
             if(currentUser && isOnline && !document.hidden) {
@@ -642,7 +637,7 @@
         db.ref('messages').on('child_removed', (s) => { document.querySelector(`[data-message-id="${s.key}"]`)?.remove(); });
     }
 
-    // ========== در حال نوشتن ==========
+    // ========== در حال نوشتن با دقت بالا ==========
     function listenTyping() {
         db.ref('typing').on('value', (snapshot) => {
             let typingUser = null;
