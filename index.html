@@ -15,7 +15,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #0a0a0a;
             height: 100vh;
+            width: 100%;
             overflow: hidden;
+            position: fixed;
         }
 
         /* صفحه ورود */
@@ -151,9 +153,13 @@
             border-bottom: 1px solid rgba(192, 132, 252, 0.3);
         }
 
-        /* طراحی ساده و بدون حاشیه */
+        /* ========== راه حل نهایی: Fixed + Padding ========== */
         .messages-area {
-            flex: 1;
+            position: fixed;
+            top: 120px; /* فضای هدر */
+            left: 0;
+            right: 0;
+            bottom: 70px; /* فضای کادر تایپ */
             overflow-y: auto;
             padding: 12px;
             display: flex;
@@ -161,11 +167,15 @@
             gap: 6px;
         }
         
-        /* کادر تایپ - اینجا هست */
+        /* کادر تایپ - ثابت در پایین */
         .input-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: white;
             border-top: 1px solid #ddd;
-            flex-shrink: 0;
+            z-index: 20;
         }
         .input-wrapper {
             display: flex; 
@@ -269,6 +279,7 @@
             .send-btn { width: 40px; height: 40px; }
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
+            .messages-area { top: 110px; bottom: 65px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
