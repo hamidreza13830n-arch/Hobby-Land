@@ -16,8 +16,6 @@
             background: #0a0a0a;
             height: 100vh;
             overflow: hidden;
-            position: fixed;
-            width: 100%;
         }
 
         /* صفحه ورود */
@@ -155,7 +153,8 @@
             border-bottom: 1px solid rgba(192, 132, 252, 0.3);
         }
 
-        /* منطقه پیام‌ها */
+        /* ========== راه حل اصلی مشکل ========== */
+        /* منطقه پیام‌ها با ارتفاع محاسبه شده */
         .messages-area {
             flex: 1;
             overflow-y: auto;
@@ -163,7 +162,46 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            padding-bottom: 20px;
+            /* حذف padding-bottom اضافی */
+        }
+        
+        /* کادر تایپ - دیگر fixed نیست */
+        .input-container {
+            background: white;
+            border-top: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+        .input-wrapper {
+            display: flex; 
+            padding: 10px 12px; 
+            gap: 10px;
+            align-items: center;
+        }
+        .message-input {
+            flex: 1; 
+            padding: 12px 16px; 
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background: white;
+            outline: none; 
+            font-family: inherit; 
+            font-size: 14px;
+        }
+        .message-input:focus {
+            border-color: #c084fc;
+        }
+        .send-btn {
+            background: transparent; 
+            border: none; 
+            padding: 0; 
+            cursor: pointer;
+            width: 44px; 
+            height: 44px;
+            background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000a2f871fda366f0a9ff6a56b0.png');
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center;
+            flex-shrink: 0;
         }
         
         .message-wrapper { display: flex; width: 100%; margin-bottom: 2px; }
@@ -215,55 +253,6 @@
             background: none; border: none; font-size: 16px; cursor: pointer; color: #777;
         }
 
-        /* ===== کادر تایپ - FIXED و پایین صفحه ===== */
-        .input-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            border-top: 1px solid #ddd;
-            z-index: 100;
-            padding-bottom: env(safe-area-inset-bottom, 0);
-        }
-        .input-wrapper {
-            display: flex; 
-            padding: 10px 12px; 
-            gap: 10px;
-            align-items: center;
-        }
-        .message-input {
-            flex: 1; 
-            padding: 12px 16px; 
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            background: white;
-            outline: none; 
-            font-family: inherit; 
-            font-size: 14px;
-        }
-        .message-input:focus {
-            border-color: #c084fc;
-        }
-        .send-btn {
-            background: transparent; 
-            border: none; 
-            padding: 0; 
-            cursor: pointer;
-            width: 44px; 
-            height: 44px;
-            background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000a2f871fda366f0a9ff6a56b0.png');
-            background-size: contain; 
-            background-repeat: no-repeat; 
-            background-position: center;
-            flex-shrink: 0;
-        }
-
-        /* فضای خالی پایین برای اینکه آخرین پیام زیر کادر تایپ نره */
-        .messages-area {
-            padding-bottom: 80px;
-        }
-
         .context-menu {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: #1f2a2f; backdrop-filter: blur(20px); border-radius: 24px;
@@ -285,7 +274,6 @@
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
             .typing-bar { font-size: 10px; padding: 4px 10px; }
-            .messages-area { padding-bottom: 75px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
@@ -361,7 +349,9 @@
 
     function scrollToBottom() {
         const area = document.getElementById('messagesArea');
-        if(area) area.scrollTop = area.scrollHeight;
+        if(area) {
+            area.scrollTop = area.scrollHeight;
+        }
     }
 
     function setUserOnline() {
