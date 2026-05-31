@@ -144,24 +144,24 @@
         .chat-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 12px 15px;
+            padding: 15px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(192, 132, 252, 0.5);
             box-shadow: 0 0 8px rgba(192, 132, 252, 0.3);
-            gap: 12px;
+            gap: 15px;
             flex-shrink: 0;
             transition: background 0.3s;
         }
         
-        /* دکمه حالت روز/شب - بزرگتر */
+        /* دکمه حالت روز/شب - خیلی بزرگتر */
         .theme-toggle {
             background: transparent;
             border: none;
             cursor: pointer;
-            width: 55px;
-            height: 55px;
+            width: 75px;
+            height: 75px;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -172,18 +172,19 @@
             transform: scale(0.95);
         }
         
-        /* بنر خیلی بزرگ و وسط */
+        /* بنر خیلی بزرگ، سمت چپ */
         .banner-area {
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000027ec71f48c9d47dd4836cccc.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
-            height: 85px;
-            flex: 3;
-            max-width: 380px;
-            margin: 0 auto;
+            height: 110px;
+            flex: 4;
+            max-width: 500px;
+            margin: 0;
+            margin-left: 5px;
         }
         
-        /* کادر آنلاین - بزرگتر */
+        /* کادر آنلاین */
         .online-box {
             position: relative;
             width: 165px;
@@ -222,7 +223,7 @@
         /* منطقه پیام‌ها */
         .messages-area {
             position: fixed;
-            top: 135px;
+            top: 160px;
             left: 0;
             right: 0;
             bottom: 85px;
@@ -314,7 +315,6 @@
         .message-input:focus {
             border-color: #c084fc;
         }
-        /* دکمه ارسال بزرگتر */
         .send-btn {
             background: transparent; 
             border: none; 
@@ -346,15 +346,15 @@
         .menu-item.danger { color: #ff8a7a; }
         
         @media (max-width: 600px) {
-            .banner-area { height: 60px; max-width: 260px; }
+            .banner-area { height: 75px; max-width: 320px; }
             .online-box { width: 140px; height: 55px; }
             .online-count { font-size: 17px; margin-left: 8px; margin-top: -4px; }
             .message-bubble { max-width: 85%; }
             .send-btn { width: 50px; height: 50px; }
-            .theme-toggle { width: 48px; height: 48px; }
+            .theme-toggle { width: 60px; height: 60px; }
             .message-input { padding: 10px 14px; font-size: 13px; }
-            .chat-header { padding: 10px 12px; }
-            .messages-area { top: 128px; bottom: 78px; }
+            .chat-header { padding: 12px 14px; }
+            .messages-area { top: 150px; bottom: 78px; }
             .typing-bar { padding: 5px 10px; font-size: 10px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
