@@ -18,6 +18,7 @@
             width: 100%;
             overflow: hidden;
             position: fixed;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* صفحه ورود */
@@ -56,6 +57,7 @@
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
+            transition: background 0.3s;
         }
 
         .login-logo {
@@ -77,6 +79,7 @@
         .login-box input {
             width: 100%; padding: 12px 16px; margin: 8px 0; border: 1px solid #ddd;
             border-radius: 50px; font-size: 15px; background: #f8f9fa; outline: none;
+            transition: background 0.3s, border 0.3s;
         }
         .login-box button {
             width: 100%; padding: 12px; background: linear-gradient(135deg, #25d366, #128c7e);
@@ -94,11 +97,53 @@
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000640c71f88b100e7f56cbb09d.png?raw=true') no-repeat center center fixed;
             background-size: cover;
             position: relative;
+            transition: background 0.3s;
+        }
+        
+        /* حالت شب */
+        body.night-mode .chat-container {
+            background: #1a1a2e;
+        }
+        body.night-mode .chat-container::before {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        body.night-mode .chat-header {
+            background: #16213e;
+            border-bottom-color: #0f3460;
+        }
+        body.night-mode .online-box {
+            filter: brightness(0.9);
+        }
+        body.night-mode .typing-bar {
+            background: #0f3460;
+            color: #a0c4ff;
+        }
+        body.night-mode .messages-area {
+            background: transparent;
+        }
+        body.night-mode .other-message .message-bubble {
+            background: #1e2a47;
+            color: #e0e0e0;
+        }
+        body.night-mode .input-container {
+            background: #16213e;
+            border-top-color: #0f3460;
+        }
+        body.night-mode .message-input {
+            background: #0f3460;
+            border-color: #1e3a5f;
+            color: white;
+        }
+        body.night-mode .message-input::placeholder {
+            color: #88aadd;
+        }
+        body.night-mode .send-btn {
+            filter: brightness(0.9);
         }
         
         .hidden { display: none !important; }
 
-        /* هدر */
+        /* هدر با تنظیمات جدید */
         .chat-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -110,6 +155,24 @@
             box-shadow: 0 0 8px rgba(192, 132, 252, 0.3);
             gap: 8px;
             flex-shrink: 0;
+            transition: background 0.3s;
+        }
+        
+        /* دکمه حالت روز/شب - سمت چپ */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+        .theme-toggle:active {
+            transform: scale(0.95);
         }
         
         .banner-area {
@@ -118,13 +181,13 @@
             background-repeat: no-repeat;
             height: 55px;
             flex: 1;
-            max-width: 250px;
+            max-width: 220px;
         }
         
         .online-box {
             position: relative;
-            width: 160px;
-            height: 60px;
+            width: 140px;
+            height: 55px;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000446871fd9d03516007d5fe16.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -135,13 +198,13 @@
         }
         .online-count {
             color: #c084fc;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: bold;
             margin-left: 8px;
             margin-top: -4px;
         }
         
-        /* ========== در حال نوشتن - دقیقاً وسط، زیر هدر ========== */
+        /* در حال نوشتن */
         .typing-bar {
             background: rgba(0, 0, 0, 0.55);
             backdrop-filter: blur(8px);
@@ -153,13 +216,13 @@
             display: none;
             border-bottom: 1px solid rgba(192, 132, 252, 0.3);
             font-weight: 500;
-            letter-spacing: 0.3px;
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* ========== منطقه پیام‌ها ========== */
+        /* منطقه پیام‌ها */
         .messages-area {
             position: fixed;
-            top: 120px;
+            top: 115px;
             left: 0;
             right: 0;
             bottom: 70px;
@@ -170,7 +233,7 @@
             gap: 6px;
         }
         
-        /* ========== ترتیب پیام‌ها: خودم راست، بقیه چپ ========== */
+        /* ========== ترتیب پیام‌ها درست مثل تلگرام ========== */
         .message-wrapper { display: flex; width: 100%; margin-bottom: 2px; }
         .message-wrapper.my-message { justify-content: flex-end; }
         .message-wrapper.other-message { justify-content: flex-start; }
@@ -229,6 +292,7 @@
             background: white;
             border-top: 1px solid #ddd;
             z-index: 20;
+            transition: background 0.3s, border 0.3s;
         }
         .input-wrapper {
             display: flex; 
@@ -245,6 +309,7 @@
             outline: none; 
             font-family: inherit; 
             font-size: 14px;
+            transition: background 0.3s, border 0.3s, color 0.3s;
         }
         .message-input:focus {
             border-color: #c084fc;
@@ -261,6 +326,7 @@
             background-repeat: no-repeat; 
             background-position: center;
             flex-shrink: 0;
+            transition: filter 0.3s;
         }
 
         .context-menu {
@@ -276,15 +342,16 @@
         .menu-item.danger { color: #ff8a7a; }
         
         @media (max-width: 600px) {
-            .banner-area { height: 45px; max-width: 180px; }
-            .online-box { width: 130px; height: 50px; }
-            .online-count { font-size: 15px; margin-left: 6px; margin-top: -3px; }
+            .banner-area { height: 42px; max-width: 160px; }
+            .online-box { width: 115px; height: 48px; }
+            .online-count { font-size: 14px; margin-left: 6px; margin-top: -3px; }
             .message-bubble { max-width: 85%; }
             .send-btn { width: 40px; height: 40px; }
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
-            .messages-area { top: 110px; bottom: 65px; }
+            .messages-area { top: 105px; bottom: 65px; }
             .typing-bar { padding: 5px 10px; font-size: 10px; }
+            .theme-toggle { width: 38px; height: 38px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
@@ -306,13 +373,13 @@
 
 <div id="chatPage" class="chat-container hidden">
     <div class="chat-header">
+        <button id="themeToggleBtn" class="theme-toggle"></button>
         <div class="banner-area"></div>
         <div class="online-box">
             <span class="online-count" id="onlineUsers">0</span>
         </div>
     </div>
     
-    <!-- در حال نوشتن - اینجا وسط -->
     <div id="typingBar" class="typing-bar"></div>
     
     <div class="messages-area" id="messagesArea"></div>
@@ -355,6 +422,41 @@
     let isOnline = false;
     let onlineRef = null;
     let typingCheckInterval = null;
+
+    // ========== حالت روز/شب ==========
+    let isDarkMode = false;
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const dayIcon = 'https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000376c71f48039b8ebb7f0400d.png';
+    const nightIcon = 'https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000afbc724386ad736cc77687e1.png';
+    
+    function setTheme(isDark) {
+        if(isDark) {
+            document.body.classList.add('night-mode');
+            themeBtn.style.backgroundImage = `url('${nightIcon}')`;
+        } else {
+            document.body.classList.remove('night-mode');
+            themeBtn.style.backgroundImage = `url('${dayIcon}')`;
+        }
+        themeBtn.style.backgroundSize = 'contain';
+        themeBtn.style.backgroundRepeat = 'no-repeat';
+        themeBtn.style.backgroundPosition = 'center';
+        localStorage.setItem('hobbyLandTheme', isDark ? 'dark' : 'light');
+    }
+    
+    function toggleTheme() {
+        isDarkMode = !isDarkMode;
+        setTheme(isDarkMode);
+    }
+    
+    // بارگذاری تم ذخیره شده
+    const savedTheme = localStorage.getItem('hobbyLandTheme');
+    if(savedTheme === 'dark') {
+        isDarkMode = true;
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+    if(themeBtn) themeBtn.onclick = toggleTheme;
 
     function hideContextMenu() { if(contextMenuDiv) { contextMenuDiv.remove(); contextMenuDiv = null; } }
     function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
@@ -637,7 +739,6 @@
         db.ref('messages').on('child_removed', (s) => { document.querySelector(`[data-message-id="${s.key}"]`)?.remove(); });
     }
 
-    // ========== در حال نوشتن با دقت بالا ==========
     function listenTyping() {
         db.ref('typing').on('value', (snapshot) => {
             let typingUser = null;
