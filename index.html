@@ -16,6 +16,8 @@
             background: #0a0a0a;
             height: 100vh;
             overflow: hidden;
+            position: fixed;
+            width: 100%;
         }
 
         /* صفحه ورود */
@@ -153,8 +155,7 @@
             border-bottom: 1px solid rgba(192, 132, 252, 0.3);
         }
 
-        /* ========== راه حل اصلی مشکل ========== */
-        /* منطقه پیام‌ها با ارتفاع محاسبه شده */
+        /* ========== راه حل قطعی ========== */
         .messages-area {
             flex: 1;
             overflow-y: auto;
@@ -162,14 +163,19 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            /* حذف padding-bottom اضافی */
+            /* این خط مهمه: فضای خالی به اندازه ارتفاع کادر تایپ */
+            padding-bottom: 85px;
         }
         
-        /* کادر تایپ - دیگر fixed نیست */
         .input-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: white;
             border-top: 1px solid #ddd;
-            flex-shrink: 0;
+            z-index: 100;
+            padding-bottom: env(safe-area-inset-bottom, 0);
         }
         .input-wrapper {
             display: flex; 
@@ -274,6 +280,7 @@
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
             .typing-bar { font-size: 10px; padding: 4px 10px; }
+            .messages-area { padding-bottom: 80px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
