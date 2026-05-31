@@ -155,13 +155,13 @@
             transition: background 0.3s;
         }
         
-        /* دکمه حالت روز/شب - خیلی بزرگتر */
+        /* دکمه روز/شب - بزرگ */
         .theme-toggle {
             background: transparent;
             border: none;
             cursor: pointer;
-            width: 85px;
-            height: 85px;
+            width: 75px;
+            height: 75px;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -172,22 +172,21 @@
             transform: scale(0.95);
         }
         
-        /* بنر خیلی خیلی بزرگ و چپ‌تر */
+        /* بنر - 3 برابر بزرگتر */
         .banner-area {
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000027ec71f48c9d47dd4836cccc.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
-            height: 130px;
+            height: 200px;
             flex: 5;
-            max-width: 600px;
-            margin: 0;
-            margin-left: -20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
-        /* کادر آنلاین */
+        /* گزینه آنلاین - خیلی چپ‌تر */
         .online-box {
             position: relative;
-            width: 175px;
+            width: 180px;
             height: 70px;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000446871fd9d03516007d5fe16.png') no-repeat center center;
             background-size: contain;
@@ -196,6 +195,7 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            margin-right: -30px;
         }
         .online-count {
             color: #c084fc;
@@ -223,7 +223,7 @@
         /* منطقه پیام‌ها */
         .messages-area {
             position: fixed;
-            top: 175px;
+            top: 245px;
             left: 0;
             right: 0;
             bottom: 85px;
@@ -234,13 +234,13 @@
             gap: 6px;
         }
         
-        /* ========== ترتیب پیام‌ها: خودم راست، بقیه چپ ========== */
+        /* ========== درست مثل تلگرام: خودم راست، بقیه چپ ========== */
         .message-wrapper { display: flex; width: 100%; margin-bottom: 2px; }
         .message-wrapper.my-message { justify-content: flex-end; }
         .message-wrapper.other-message { justify-content: flex-start; }
         
         .message-bubble {
-            max-width: 80%;
+            max-width: 75%;
             padding: 8px 12px;
             border-radius: 18px;
             cursor: pointer;
@@ -320,8 +320,8 @@
             border: none; 
             padding: 0; 
             cursor: pointer;
-            width: 60px; 
-            height: 60px;
+            width: 58px; 
+            height: 58px;
             background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000afcc720a9ed6e8e8a468856b.png');
             background-size: contain; 
             background-repeat: no-repeat; 
@@ -346,15 +346,15 @@
         .menu-item.danger { color: #ff8a7a; }
         
         @media (max-width: 600px) {
-            .banner-area { height: 85px; max-width: 380px; margin-left: -10px; }
-            .online-box { width: 150px; height: 60px; }
+            .banner-area { height: 130px; max-width: 500px; }
+            .online-box { width: 150px; height: 60px; margin-right: -15px; }
             .online-count { font-size: 18px; margin-left: 8px; margin-top: -4px; }
             .message-bubble { max-width: 85%; }
             .send-btn { width: 52px; height: 52px; }
-            .theme-toggle { width: 65px; height: 65px; }
+            .theme-toggle { width: 60px; height: 60px; }
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 12px 14px; }
-            .messages-area { top: 165px; bottom: 78px; }
+            .messages-area { top: 235px; bottom: 78px; }
             .typing-bar { padding: 5px 10px; font-size: 10px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
