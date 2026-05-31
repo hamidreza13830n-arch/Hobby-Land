@@ -144,24 +144,24 @@
         .chat-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 10px 12px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(192, 132, 252, 0.5);
             box-shadow: 0 0 8px rgba(192, 132, 252, 0.3);
-            gap: 8px;
+            gap: 12px;
             flex-shrink: 0;
             transition: background 0.3s;
         }
         
-        /* دکمه حالت روز/شب */
+        /* دکمه حالت روز/شب - بزرگتر */
         .theme-toggle {
             background: transparent;
             border: none;
             cursor: pointer;
-            width: 44px;
-            height: 44px;
+            width: 55px;
+            height: 55px;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -172,21 +172,22 @@
             transform: scale(0.95);
         }
         
-        /* بنر بزرگ و وسط */
+        /* بنر خیلی بزرگ و وسط */
         .banner-area {
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_0000000027ec71f48c9d47dd4836cccc.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
-            height: 70px;
-            flex: 2;
-            max-width: 320px;
+            height: 85px;
+            flex: 3;
+            max-width: 380px;
             margin: 0 auto;
         }
         
+        /* کادر آنلاین - بزرگتر */
         .online-box {
             position: relative;
-            width: 140px;
-            height: 55px;
+            width: 165px;
+            height: 65px;
             background: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000446871fd9d03516007d5fe16.png') no-repeat center center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -197,10 +198,10 @@
         }
         .online-count {
             color: #c084fc;
-            font-size: 17px;
+            font-size: 20px;
             font-weight: bold;
-            margin-left: 8px;
-            margin-top: -4px;
+            margin-left: 10px;
+            margin-top: -5px;
         }
         
         /* در حال نوشتن */
@@ -221,10 +222,10 @@
         /* منطقه پیام‌ها */
         .messages-area {
             position: fixed;
-            top: 125px;
+            top: 135px;
             left: 0;
             right: 0;
-            bottom: 80px;
+            bottom: 85px;
             overflow-y: auto;
             padding: 12px;
             display: flex;
@@ -234,8 +235,8 @@
         
         /* ========== ترتیب پیام‌ها: خودم راست، بقیه چپ ========== */
         .message-wrapper { display: flex; width: 100%; margin-bottom: 2px; }
-        .message-wrapper.my-message { justify-content: flex-end; }  /* خودم راست */
-        .message-wrapper.other-message { justify-content: flex-start; }  /* بقیه چپ */
+        .message-wrapper.my-message { justify-content: flex-end; }
+        .message-wrapper.other-message { justify-content: flex-start; }
         
         .message-bubble {
             max-width: 80%;
@@ -295,7 +296,7 @@
         }
         .input-wrapper {
             display: flex; 
-            padding: 10px 12px; 
+            padding: 10px 15px; 
             gap: 12px;
             align-items: center;
         }
@@ -319,8 +320,8 @@
             border: none; 
             padding: 0; 
             cursor: pointer;
-            width: 54px; 
-            height: 54px;
+            width: 58px; 
+            height: 58px;
             background-image: url('https://raw.githubusercontent.com/persiancom/Hobby-Land/main/file_00000000afcc720a9ed6e8e8a468856b.png');
             background-size: contain; 
             background-repeat: no-repeat; 
@@ -345,16 +346,16 @@
         .menu-item.danger { color: #ff8a7a; }
         
         @media (max-width: 600px) {
-            .banner-area { height: 55px; max-width: 240px; }
-            .online-box { width: 115px; height: 48px; }
-            .online-count { font-size: 14px; margin-left: 6px; margin-top: -3px; }
+            .banner-area { height: 60px; max-width: 260px; }
+            .online-box { width: 140px; height: 55px; }
+            .online-count { font-size: 17px; margin-left: 8px; margin-top: -4px; }
             .message-bubble { max-width: 85%; }
-            .send-btn { width: 48px; height: 48px; }
+            .send-btn { width: 50px; height: 50px; }
+            .theme-toggle { width: 48px; height: 48px; }
             .message-input { padding: 10px 14px; font-size: 13px; }
-            .chat-header { padding: 8px 10px; }
-            .messages-area { top: 115px; bottom: 75px; }
+            .chat-header { padding: 10px 12px; }
+            .messages-area { top: 128px; bottom: 78px; }
             .typing-bar { padding: 5px 10px; font-size: 10px; }
-            .theme-toggle { width: 38px; height: 38px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
