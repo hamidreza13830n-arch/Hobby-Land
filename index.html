@@ -141,16 +141,19 @@
             margin-top: -4px;
         }
         
+        /* ========== در حال نوشتن - زیر هدر، وسط، چسبیده ========== */
         .typing-bar {
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(8px);
-            padding: 5px 12px;
-            font-size: 11px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            font-size: 12px;
             color: #c084fc;
             text-align: center;
             flex-shrink: 0;
             display: none;
-            border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+            border-bottom: 1px solid rgba(192, 132, 252, 0.4);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* ========== راه حل نهایی: Fixed + Padding ========== */
@@ -280,6 +283,7 @@
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
             .messages-area { top: 110px; bottom: 65px; }
+            .typing-bar { padding: 6px 10px; font-size: 11px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
@@ -307,6 +311,7 @@
         </div>
     </div>
     
+    <!-- در حال نوشتن - دقیقاً زیر هدر -->
     <div id="typingBar" class="typing-bar"></div>
     
     <div class="messages-area" id="messagesArea"></div>
@@ -637,14 +642,24 @@
         db.ref('messages').on('child_removed', (s) => { document.querySelector(`[data-message-id="${s.key}"]`)?.remove(); });
     }
 
+    // ========== در حال نوشتن ==========
     function listenTyping() {
         db.ref('typing').on('value', (snapshot) => {
             let typingUser = null;
-            snapshot.forEach(child => { if(child.key !== currentUser && child.val() === true) typingUser = child.key; });
-            const bar = document.getElementById('typingBar');
-            if(bar) {
-                if(typingUser) { bar.innerHTML = `✍️ ${typingUser} در حال نوشتن...`; bar.style.display = 'block'; }
-                else { bar.innerHTML = ''; bar.style.display = 'none'; }
+            snapshot.forEach(child => { 
+                if(child.key !== currentUser && child.val() === true) {
+                    typingUser = child.key;
+                }
+            });
+            const typingBar = document.getElementById('typingBar');
+            if(typingBar) {
+                if(typingUser) {
+                    typingBar.innerHTML = `✍️ ${typingUser} در حال نوشتن...`;
+                    typingBar.style.display = 'block';
+                } else {
+                    typingBar.innerHTML = '';
+                    typingBar.style.display = 'none';
+                }
             }
         });
     }
