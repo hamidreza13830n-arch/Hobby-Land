@@ -83,7 +83,7 @@
         }
         .error-msg { color: #dc3545; font-size: 13px; margin-top: 12px; display: none; }
 
-        /* صفحه چت - طراحی از نو */
+        /* صفحه چت */
         .chat-container {
             width: 100%;
             height: 100vh;
@@ -151,7 +151,7 @@
             border-bottom: 1px solid rgba(192, 132, 252, 0.3);
         }
 
-        /* ========== راه حل نهایی و ساده ========== */
+        /* طراحی ساده و بدون حاشیه */
         .messages-area {
             flex: 1;
             overflow-y: auto;
@@ -159,10 +159,9 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            /* فضای خالی بزرگ پایین برای جلوگیری از زیر کادر رفتن پیام */
-            padding-bottom: 70px;
         }
         
+        /* کادر تایپ - اینجا هست */
         .input-container {
             background: white;
             border-top: 1px solid #ddd;
@@ -270,8 +269,6 @@
             .send-btn { width: 40px; height: 40px; }
             .message-input { padding: 10px 14px; font-size: 13px; }
             .chat-header { padding: 8px 10px; }
-            .typing-bar { font-size: 10px; padding: 4px 10px; }
-            .messages-area { padding-bottom: 65px; }
         }
         .messages-area::-webkit-scrollbar { width: 3px; }
         .messages-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
